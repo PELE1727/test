@@ -14,13 +14,38 @@
         body {
             min-height: 100vh;
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            animation: slideshow 12s infinite;
             display: flex;
             flex-direction: column;
+        }
+
+        /* ===============================
+           DESKTOP BACKGROUND (SLIDESHOW)
+        =============================== */
+        @media (min-width: 769px) {
+            body {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                animation: slideshow 18s infinite ease-in-out;
+            }
+
+            @keyframes slideshow {
+                0%   { background-image: url("image1.png"); }
+                33%  { background-image: url("image2.png"); }
+                66%  { background-image: url("image3.png"); }
+                100% { background-image: url("image1.png"); }
+            }
+        }
+
+        /* ===============================
+           MOBILE BACKGROUND (DARK)
+        =============================== */
+        @media (max-width: 768px) {
+            body {
+                background: #0d0d0d;
+                animation: none;
+            }
         }
 
         /* ===== HEADER ===== */
@@ -28,32 +53,24 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 18px 40px;
             z-index: 1000;
-            backdrop-filter: blur(6px);
         }
 
-        .logo {
+        .logo a {
             color: white;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
+            text-decoration: none;
+            text-transform: uppercase;
             letter-spacing: 1px;
-            transition: 0.3s;
         }
 
-        /* ===== HAMBURGER ===== */
-        .menu-toggle {
-            display: none;
-            font-size: 30px;
-            color: white;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
-
+        /* ===== NAVIGATION ===== */
         nav ul {
             list-style: none;
             display: flex;
@@ -65,8 +82,9 @@
             color: white;
             font-size: 14px;
             padding: 8px 16px;
-            transition: 0.3s ease;
             border-radius: 25px;
+            transition: 0.3s ease;
+            text-transform: uppercase;
         }
 
         nav ul li a:hover {
@@ -74,82 +92,77 @@
             color: black;
         }
 
+        /* ===== HAMBURGER ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+        }
+
         /* ===== OVERLAY ===== */
         .overlay {
             flex: 1;
-            background: rgba(0, 0, 0, 0.55);
+            background: rgba(0, 0, 0, 0.75);
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 120px;
-            text-align: center;
+            padding: 140px 60px 40px 60px;
+        }
+
+        .overlay h1,
+        .overlay h2 {
+            text-transform: uppercase;
+            font-weight: bold;
         }
 
         .overlay h1 {
             font-size: 42px;
-            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .overlay h2 {
+            font-size: 24px;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .overlay p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         /* ===== FOOTER ===== */
         footer {
             background: #000;
             color: white;
-            padding: 15px 6%;
+            padding: 20px 6%;
             font-size: 13px;
-        }
-
-        .footer-container {
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
         }
 
         .footer-section {
-            width: 45%;
+            flex: 1;
             min-width: 200px;
         }
 
         .footer-section h3 {
+            color: #00c3ff;
             margin-bottom: 6px;
-            font-size: 14px;
-            color: #00c3ff;
+            text-transform: uppercase;
         }
 
-        footer a {
-            color: #00c3ff;
-            text-decoration: none;
+        footer p {
+            margin-bottom: 6px;
         }
 
-        .contact-grid, .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px 10px;
-        }
-
-        /* ===== BACKGROUND SLIDESHOW ===== */
-        @keyframes slideshow {
-            0% { background-image: url("image1.png"); }
-            33% { background-image: url("image2.png"); }
-            66% { background-image: url("image3.png"); }
-            100% { background-image: url("image1.png"); }
-        }
-
-        /* ================= MOBILE ================= */
+        /* ===== MOBILE ===== */
         @media (max-width: 768px) {
-
-            body {
-                background-size: cover;
-                background-position: center;
-                background-attachment: scroll;
-            }
 
             header {
                 padding: 15px 20px;
-            }
-
-            .logo {
-                font-size: 20px;
             }
 
             nav {
@@ -185,17 +198,25 @@
                 display: block;
             }
 
-            .footer-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer-section {
-                width: 100%;
+            .overlay {
+                padding: 120px 20px 30px 20px;
             }
 
             .overlay h1 {
                 font-size: 28px;
+            }
+
+            .overlay h2 {
+                font-size: 20px;
+            }
+
+            .overlay p {
+                font-size: 15px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
             }
         }
 
@@ -205,8 +226,8 @@
 <body>
 
 <header>
-    <div class="logo" id="logoText">
-        COOPERATIVE MINIERE KABABARA ET GIKINGO
+    <div class="logo">
+        <a href="1welcome.html">COMIKAGI</a>
     </div>
 
     <div class="menu-toggle" id="menuToggle">☰</div>
@@ -214,41 +235,47 @@
     <nav id="navMenu">
         <ul>
             <li><a href="#">HOME</a></li>
-            <li><a href="#">ABOUT</a></li>
-            <li><a href="#">SERVICES</a></li>
-            <li><a href="#">OUR WORK</a></li>
-            <li><a href="#">PUBLICATION</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="our_work.html">OUR WORK</a></li>
+            <li><a href="publication.html">PUBLICATION</a></li>
         </ul>
     </nav>
 </header>
 
 <div class="overlay">
-    <h1>WELCOME TO COMIKAGI</h1>
+    <h1>SERVICES</h1>
+
+    <h2>MINING</h2>
+    <p>Mining is the extraction of geological materials and minerals from the surface of the Earth. Cassiterite and coltan are key minerals found in pegmatite ore hosting in metasedimentary rocks.</p>
+
+    <h2>LABORATORY WORK</h2>
+    <p>Mining laboratory work involves scientific testing and analysis of geological samples to determine chemical composition and quality control using XRF methods.</p>
+
+    <h2>MINERAL PROCESSING</h2>
+    <p>Mineral processing uses physical and chemical methods to separate valuable minerals from raw ore and waste rock, increasing grade and concentration.</p>
+
+    <h2>MARKET</h2>
+    <p>Metal and mineral prices are influenced by supply and demand, production costs, economic conditions, and global commodity markets.</p>
+
+    <h2>HOSPITALITY</h2>
+    <p>Hospitality reflects COMIKAGI’s commitment to excellence in service, accommodation, and guest care.</p>
 </div>
 
 <footer>
-    <div class="footer-container">
-        <div class="footer-section">
-            <h3>CONTACTS</h3>
-            <div class="contact-grid">
-                <p><strong>TIN:</strong></p>
-                <p>101773235</p>
-                <p><strong>TEL:</strong></p>
-                <p>+250783419757</p>
-                <p><strong>EMAIL:</strong></p>
-                <p><a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a></p>
-            </div>
-        </div>
+    <div class="footer-section">
+        <h3>CONTACTS</h3>
+        <p><strong>TIN:</strong> 101773235</p>
+        <p><strong>TEL:</strong> +250783419757</p>
+        <p><strong>EMAIL:</strong> comikagi2030@gmail.com</p>
+    </div>
 
-        <div class="footer-section">
-            <h3>LOCATION</h3>
-            <div class="location-grid">
-                <p>NORTH PROVINCE</p>
-                <p>GAKENKE DISTRICT</p>
-                <p>RULI SECTOR</p>
-                <p>GIKINGO CELL</p>
-            </div>
-        </div>
+    <div class="footer-section">
+        <h3>LOCATION</h3>
+        <p>NORTH PROVINCE</p>
+        <p>GAKENKE DISTRICT</p>
+        <p>RULI SECTOR</p>
+        <p>GIKINGO CELL</p>
     </div>
 </footer>
 
@@ -256,27 +283,10 @@
     const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
     const navLinks = document.querySelectorAll("nav ul li a");
-    const logoText = document.getElementById("logoText");
-
-    function checkScreen() {
-        if (window.innerWidth <= 768) {
-            logoText.textContent = "COMIKAGI";
-        } else {
-            logoText.textContent = "COOPERATIVE MINIERE KABABARA ET GIKINGO";
-        }
-    }
-
-    checkScreen();
-    window.addEventListener("resize", checkScreen);
 
     menuToggle.addEventListener("click", () => {
         navMenu.classList.toggle("active");
-
-        if (navMenu.classList.contains("active")) {
-            menuToggle.textContent = "✕";
-        } else {
-            menuToggle.textContent = "☰";
-        }
+        menuToggle.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
     });
 
     navLinks.forEach(link => {

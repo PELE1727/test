@@ -43,32 +43,13 @@
             letter-spacing: 1px;
         }
 
-        /* ===== HAMBURGER ===== */
+        /* ===== HAMBURGER ICON ===== */
         .menu-toggle {
             display: none;
-            flex-direction: column;
+            font-size: 28px;
+            color: white;
             cursor: pointer;
-            gap: 5px;
-        }
-
-        .menu-toggle span {
-            width: 28px;
-            height: 3px;
-            background: white;
-            transition: 0.4s;
-        }
-
-        /* Animate hamburger to X */
-        .menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
+            transition: 0.3s ease;
         }
 
         nav ul {
@@ -97,7 +78,6 @@
             background: rgba(0, 0, 0, 0.6);
             color: white;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding-top: 120px;
@@ -106,7 +86,6 @@
 
         .overlay h1 {
             font-size: 42px;
-            margin-bottom: 15px;
             letter-spacing: 2px;
         }
 
@@ -148,14 +127,14 @@
 
         /* ===== BACKGROUND SLIDESHOW ===== */
         @keyframes slideshow {
-            0% { background-image: url("image1.png"); }
-            33% { background-image: url("image2.png"); }
-            66% { background-image: url("image3.png"); }
-            100% { background-image: url("image1.png"); }
+            0% { background-image: url("images/image1.png"); }
+            33% { background-image: url("images/image2.png"); }
+            66% { background-image: url("images/image3.png"); }
+            100% { background-image: url("images/image1.png"); }
         }
 
         /* ============================= */
-        /* ===== MOBILE RESPONSIVE ===== */
+        /* ===== MOBILE VERSION ===== */
         /* ============================= */
         @media (max-width: 768px) {
 
@@ -163,13 +142,9 @@
                 padding: 15px 20px;
             }
 
+            /* Hide original long logo */
             .logo {
                 font-size: 20px;
-            }
-
-            .logo::before {
-                content: "COMIKAGI";
-                display: block;
             }
 
             nav {
@@ -202,7 +177,7 @@
             }
 
             .menu-toggle {
-                display: flex;
+                display: block;
             }
 
             .footer-container {
@@ -225,13 +200,11 @@
 <body>
 
 <header>
-    <div class="logo">COOPERATIVE MINIERE KABABARA ET GIKINGO</div>
+    <!-- Logo -->
+    <div class="logo" id="logoText">COOPERATIVE MINIERE KABABARA ET GIKINGO</div>
 
-    <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
+    <!-- Hamburger -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
 
     <nav id="navMenu">
         <ul>
@@ -278,17 +251,36 @@
     const menuToggle = document.getElementById("menuToggle");
     const navMenu = document.getElementById("navMenu");
     const navLinks = document.querySelectorAll("nav ul li a");
+    const logoText = document.getElementById("logoText");
 
+    // Change logo text on mobile
+    function checkScreen() {
+        if (window.innerWidth <= 768) {
+            logoText.textContent = "COMIKAGI";
+        } else {
+            logoText.textContent = "COOPERATIVE MINIERE KABABARA ET GIKINGO";
+        }
+    }
+
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+
+    // Toggle menu and icon
     menuToggle.addEventListener("click", () => {
         navMenu.classList.toggle("active");
-        menuToggle.classList.toggle("active");
+
+        if (navMenu.classList.contains("active")) {
+            menuToggle.textContent = "✕"; // X icon
+        } else {
+            menuToggle.textContent = "☰"; // Hamburger
+        }
     });
 
-    // Close menu after clicking a link
+    // Close menu when link clicked
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
             navMenu.classList.remove("active");
-            menuToggle.classList.remove("active");
+            menuToggle.textContent = "☰";
         });
     });
 </script>

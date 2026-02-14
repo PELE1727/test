@@ -1,251 +1,283 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>COMIKAGI</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMIKAGI</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        body {
-            min-height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-        }
+<style>
+/* ================= GENERAL ================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        /* ===============================
-           DESKTOP BACKGROUND (SLIDESHOW)
-        =============================== */
-        @media (min-width: 769px) {
-            body {
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                animation: slideshow 18s infinite ease-in-out;
-            }
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f4f6f9;
+}
 
-            @keyframes slideshow {
-                0%   { background-image: url("image1.png"); }
-                33%  { background-image: url("image2.png"); }
-                66%  { background-image: url("image3.png"); }
-                100% { background-image: url("image1.png"); }
-            }
-        }
+/* ================= NAVIGATION ================= */
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    background:linear-gradient(90deg,#0f2027,#203a43,#2c5364);
+    backdrop-filter:blur(10px);
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
 
-        /* ===============================
-           MOBILE BACKGROUND (DARK)
-        =============================== */
-        @media (max-width: 768px) {
-            body {
-                background: #0d0d0d;
-                animation: none;
-            }
-        }
+.logo a{
+    color:white;
+    font-size:26px;
+    font-weight:700;
+    text-decoration:none;
+    letter-spacing:2px;
+}
 
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 40px;
-            z-index: 1000;
-        }
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
 
-        .logo a {
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+    position:relative;
+    transition:0.3s;
+}
 
-        /* ===== NAVIGATION ===== */
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#ff9800;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
 
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 14px;
-            padding: 8px 16px;
-            border-radius: 25px;
-            transition: 0.3s ease;
-            text-transform: uppercase;
-        }
+nav ul li a:hover::after{
+    width:100%;
+}
 
-        nav ul li a:hover {
-            background: #00c3ff;
-            color: black;
-        }
+nav ul li a:hover{
+    color:#ff9800;
+}
 
-        /* ===== HAMBURGER ===== */
-        .menu-toggle {
-            display: none;
-            font-size: 28px;
-            color: white;
-            cursor: pointer;
-        }
+.menu-toggle{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+    color:white;
+}
 
-        /* ===== OVERLAY ===== */
-        .overlay {
-            flex: 1;
-            background: rgba(0, 0, 0, 0.75);
-            color: white;
-            padding: 140px 60px 40px 60px;
-        }
+/* ================= SLIDER ================= */
+.slider{
+    width:100%;
+    height:520px;
+    position:relative;
+    overflow:hidden;
+}
 
-        .overlay h1,
-        .overlay h2 {
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:flex;
+    opacity:0;
+    animation:pairSlide 36s infinite;
+}
 
-        .overlay h1 {
-            font-size: 42px;
-            margin-bottom: 30px;
-        }
+.slide img{
+    width:50%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 6s ease;
+    border-radius: 15px;
+}
 
-        .overlay h2 {
-            font-size: 24px;
-            margin-top: 25px;
-            margin-bottom: 10px;
-        }
+.slide:hover img{
+    transform:scale(1.08);
+}
 
-        .overlay p {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
+/* Slide animation timing */
+.slide:nth-child(1){animation-delay:0s;}
+.slide:nth-child(2){animation-delay:6s;}
+.slide:nth-child(3){animation-delay:12s;}
+.slide:nth-child(4){animation-delay:18s;}
+.slide:nth-child(5){animation-delay:24s;}
+.slide:nth-child(6){animation-delay:30s;}
 
-        /* ===== FOOTER ===== */
-        footer {
-            background: #000;
-            color: white;
-            padding: 20px 6%;
-            font-size: 13px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
+@keyframes pairSlide{
+    0%{opacity:0;}
+    5%{opacity:1;}
+    20%{opacity:1;}
+    25%{opacity:0;}
+    100%{opacity:0;}
+}
 
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
+.slide::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to right,rgba(0,0,0,0.3),rgba(0,0,0,0.1));
+    z-index:1;
+}
 
-        .footer-section h3 {
-            color: #00c3ff;
-            margin-bottom: 6px;
-            text-transform: uppercase;
-        }
+/* ================= FOOTER ================= */
+footer{
+    background:#111;
+    color:white;
+    padding:50px 20px;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+}
 
-        footer p {
-            margin-bottom: 6px;
-        }
+.footer-section{
+    max-width:300px;
+}
 
-        footer a {
-            color: #00c3ff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
+.footer-section h3{
+    margin-bottom:20px;
+    font-size:18px;
+    letter-spacing:1px;
+    position:relative;
+}
 
-        footer a:hover {
-            color: white;
-            text-decoration: underline;
-        }
+.footer-section h3::after{
+    content:"";
+    width:40px;
+    height:3px;
+    background:#ff9800;
+    position:absolute;
+    left:0;
+    bottom:-8px;
+}
 
-        .contact-grid, .location-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px 10px;
-            font-size: 12px;
-        }
+.footer-section p{
+    margin:8px 0;
+    font-weight:300;
+}
 
-        /* ===== MOBILE ===== */
-        @media (max-width: 768px) {
+/* ================= RESPONSIVE ================= */
+@media(max-width:1024px){
+    nav ul{
+        gap:20px;
+    }
+    header{
+        padding:15px 25px;
+    }
+}
 
-            header {
-                padding: 15px 20px;
-            }
+@media(max-width:768px){
 
-            nav {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: rgba(0, 0, 0, 0.95);
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease;
-            }
+    nav{
+        display:none;
+        position:absolute;
+        top:70px;
+        right:0;
+        background:#1c1c1c;
+        width:200px;
+        padding:20px;
+        border-radius:0 0 0 10px;
+    }
 
-            nav.active {
-                max-height: 400px;
-            }
+    nav ul{
+        flex-direction:column;
+        gap:15px;
+    }
 
-            nav ul {
-                flex-direction: column;
-                padding: 10px 0;
-            }
+    nav.active{
+        display:block;
+    }
 
-            nav ul li {
-                text-align: center;
-            }
+    .menu-toggle{
+        display:block;
+    }
 
-            nav ul li a {
-                padding: 15px;
-                display: block;
-            }
+    .slider{
+        height:380px;
+    }
 
-            .menu-toggle {
-                display: block;
-            }
+    .slide{
+        flex-direction:column;
+    }
 
-            .overlay {
-                padding: 120px 20px 30px 20px;
-            }
+    .slide img{
+        width:100%;
+        height:50%;
+        margin-bottom:10px;
+    }
 
-            .overlay h1 {
-                font-size: 28px;
-            }
+    footer{
+        flex-direction:column;
+        gap:30px;
+        text-align:center;
+    }
 
-            .overlay h2 {
-                font-size: 20px;
-            }
+    .footer-section h3::after{
+        left:50%;
+        transform:translateX(-50%);
+    }
+}
 
-            .overlay p {
-                font-size: 15px;
-            }
+@media(max-width:480px){
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:10px 20px;
+    }
 
-            footer {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
+    .logo a{
+        font-size:22px;
+    }
 
-    </style>
+    nav ul li a{
+        font-size:16px;
+    }
+
+    .slider{
+        height:300px;
+    }
+
+    .slide img{
+        height:50%;
+        border-radius:10px;
+    }
+
+    footer{
+        padding:40px 15px;
+    }
+
+    .footer-section h3{
+        font-size:16px;
+    }
+
+    .footer-section p{
+        font-size:14px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <header>
     <div class="logo">
-        <a href="welcome.html">COMIKAGI</a>
+        <a href="1welcome.html">COMIKAGI</a>
     </div>
 
     <div class="menu-toggle" id="menuToggle">☰</div>
@@ -261,64 +293,64 @@
     </nav>
 </header>
 
-<div class="overlay">
-    <h1>ABOUT COMIKAGI</h1>
+<div class="slider">
 
-    <h2>MINERALS MINED IN COMIKAGI</h2>
-    <p>Key mined and still mining minerals in COMIKAGI are Cassiterite and coltan.</p>
+    <div class="slide">
+        <img src="image1.png" alt="">
+        <img src="image2.png" alt="">
+    </div>
 
-    <h2>HISTORY OF MINING IN COMIKAGI</h2>
-    <p>Cooperative COMIKAGI is a mining cooperative with its headquarters in the Gakenke district, Ruli sector, Gikingo cell. It has been involved in mining for almost 35 years since 1989. Kababara perimeter is one of the six (6) mining licenses that COMIKAGI owns and is one where mining started. The president of Cooperative COMIKAGI is Kayitesi Beatrice (0783419757/comikagi2030@gmail.com). Mining activities have been conducted through underground operations.</p>
+    <div class="slide">
+        <img src="image3.png" alt="">
+        <img src="image4.jpeg" alt="">
+    </div>
 
-    <h2>PRODUCTION STATUS</h2>
-    <p>COMIKAGI production is good ranging between 10,000kg to 20,000kg. The cassiterite is more dominant than coltan in pegmatite ore.</p>
+    <div class="slide">
+        <img src="image5.jpeg" alt="">
+        <img src="image6.jpeg" alt="">
+    </div>
 
-    <h2>ADDING VALUE TO MINED MINERALS</h2>
-    <p>Currently COMIKAGI uses Magnetic separator machines which use strong permanent magnets or electromagnets to remove ferrous contaminants from concentrate ores from the field based on magnetic properties. They are crucial for industries like mining because utilizing magnetic drums, rolls, or belts to separate materials, with capacities ranging from fine particles to large debris.</p>
+    <div class="slide">
+        <img src="image7.jpeg" alt="">
+        <img src="image8.jpeg" alt="">
+    </div>
 
-    <h2>FUTURE PROJECTION</h2>
-    <p>Future project of COMIKAGI is Smelting process which will be used to extract pure metals from their mineral ores. Unlike simple melting, which only changes a substance's state from solid to liquid, smelting uses intense heat and chemical reducing agents to break the bonds between the metal and other elements like oxygen or sulfur.</p>
+    <div class="slide">
+        <img src="image9.jpeg" alt="">
+        <img src="image10.jpeg" alt="">
+    </div>
+
+    <div class="slide">
+        <img src="image11.jpeg" alt="">
+        <img src="image1.png" alt="">
+    </div>
+
 </div>
 
 <footer>
     <div class="footer-section">
         <h3>CONTACTS</h3>
-        <div class="contact-grid">
-            <p><strong>TIN:</strong></p>
-            <p>101773235</p>
-            <p><strong>TEL:</strong></p>
-            <p>+250783419757</p>
-            <p><strong>EMAIL:</strong></p>
-            <p><a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a></p>
-        </div>
+        <p><strong>TIN:</strong> 101773235</p>
+        <p><strong>TEL:</strong> +250783419757</p>
+        <p><strong>EMAIL:</strong> comikagi2030@gmail.com</p>
     </div>
+
     <div class="footer-section">
         <h3>LOCATION</h3>
-        <div class="location-grid">
-            <p>NORTH PROVINCE</p>
-            <p>GAKENKE DISTRICT</p>
-            <p>RULI SECTOR</p>
-            <p>GIKINGO CELL</p>
-        </div>
+        <p>NORTH PROVINCE</p>
+        <p>GAKENKE DISTRICT</p>
+        <p>RULI SECTOR</p>
+        <p>GIKINGO CELL</p>
     </div>
 </footer>
 
 <script>
-    const menuToggle = document.getElementById("menuToggle");
-    const navMenu = document.getElementById("navMenu");
-    const navLinks = document.querySelectorAll("nav ul li a");
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
 
-    menuToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-        menuToggle.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
-    });
-
-    navLinks.forEach(link => {
-        link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            menuToggle.textContent = "☰";
-        });
-    });
+menuToggle.addEventListener("click",()=>{
+    navMenu.classList.toggle("active");
+});
 </script>
 
 </body>

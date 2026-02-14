@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COMIKAGI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            animation: slideshow 12s infinite;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* NAVIGATION */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 13px;
+            padding: 6px 10px;
+            position: relative;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(0, 195, 255, 0.2);
+            border-radius: 4px;
+            color: #00c3ff;
+        }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: #00c3ff;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover::after { width: 100%; }
+
+        /* ===== HAMBURGER MENU ===== */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span { width: 25px; height: 3px; background: white; }
+
+        /* ===== OVERLAY ===== */
+        .overlay {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 130px 20px 20px 20px;
+            text-align: center;
+        }
+
+        .overlay h1 { font-size: 32px; }
+
+        /* ===== IMAGE CAROUSEL ===== */
+        .image-carousel { width: 100%; overflow: hidden; background: #000; padding: 10px 0; }
+        .image-track {
+            display: flex;
+            gap: 15px;
+            animation: scroll 30s linear infinite;
+        }
+        .image-track img { height: 80px; border-radius: 5px; object-fit: cover; max-width: 100%; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* ===== SECOND IMAGE GRID ===== */
+        .second-carousel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            padding: 0 5%;
+        }
+        .second-carousel img {
+            width: 48%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 15px 5%;
+            font-size: 12px;
+        }
+        .footer-container { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        .footer-section { flex: 1; min-width: 200px; }
+        .footer-section h3 { margin-bottom: 6px; font-size: 14px; color: #00c3ff; }
+        .contact-grid, .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }
+        footer a { color: #00c3ff; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        /* ===== RESPONSIVE PHONES ONLY ===== */
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            nav ul { position: absolute; top: 100%; right: 4%; width: 220px; background: rgba(0,0,0,0.95); flex-direction: column; display: none; padding: 10px; border-radius: 5px; }
+            nav ul.active { display: flex; }
+            nav ul li a { padding: 10px; font-size: 14px; }
+
+            .overlay { padding: 120px 15px 15px 15px; }
+            .overlay h1 { font-size: 22px; }
+
+            /* Fit the 3 main images into screen height */
+            body { padding-top: 0; }
+            .image-carousel { padding: 5px 0; }
+            .image-track img { height: 200px; width: 100%; object-fit: cover; }
+
+            /* Second 10 images appear below main carousel */
+            .second-carousel img { width: 48%; height: auto; }
+
+            /* Footer adjustments */
+            footer { font-size: 11px; }
+        }
+
+        /* Logo short version on small phones */
+        @media (max-width: 600px) {
+            .logo::before { content: "COMIKAGI"; display: block; }
+            .logo { color: transparent; }
+            .overlay h1 { font-size: 20px; }
+            .contact-grid, .location-grid { grid-template-columns: 1fr; text-align: center; }
+        }
+
+        /* ===== BACKGROUND SLIDESHOW ===== */
+        @keyframes slideshow {
+            0% { background-image: url("image1.png"); }
+            33% { background-image: url("image2.png"); }
+            66% { background-image: url("image3.png"); }
+            100% { background-image: url("image1.png"); }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">COOPERATIVE MINIERE KABABARA ET GIKINGO</div>
+    <div class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+    <nav>
+        <ul id="navLinks">
+            <li><a href="#">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="our_work.html">OUR WORK</a></li>
+            <li><a href="publication.html">PUBLICATION</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="overlay">
+    <h1>WELCOME TO COMIKAGI</h1>
+</div>
+
+<!-- MAIN 3 MOVING PICTURES -->
+<div class="image-carousel">
+    <div class="image-track">
+        <img src="image1.png">
+        <img src="image2.png">
+        <img src="image3.png">
+    </div>
+</div>
+
+<!-- SECOND 10 IMAGES -->
+<div class="second-carousel">
+    <img src="image4.jpeg">
+    <img src="image5.jpeg">
+    <img src="image6.jpeg">
+    <img src="image7.jpeg">
+    <img src="image8.jpeg">
+    <img src="image9.jpeg">
+    <img src="image10.jpeg">
+    <img src="image11.jpeg">
+    <img src="image12.jpeg">
+    <img src="image13.jpeg">
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>CONTACTS</h3>
+            <div class="contact-grid">
+                <p><strong>TIN:</strong></p><p>101773235</p>
+                <p><strong>TEL:</strong></p><p>+250783419757</p>
+                <p><strong>EMAIL:</strong></p>
+                <p><a href="https://mail.google.com/mail/?view=cm&to=comikagi2030@gmail.com" target="_blank">comikagi2030@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-section">
+            <h3>LOCATION</h3>
+            <div class="location-grid">
+                <p>NORTH PROVINCE</p>
+                <p>GAKENKE DISTRICT</p>
+                <p>RULI SECTOR</p>
+                <p>GIKINGO CELL</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+function toggleMenu() { document.getElementById("navLinks").classList.toggle("active"); }
+</script>
+</body>
+</html>

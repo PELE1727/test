@@ -196,7 +196,7 @@ footer{
         display:none;
         position:absolute;
         top:70px;
-        left:0; /* change from right to left */
+        left:0; /* left side */
         background:#1c1c1c;
         width:220px;
         padding:20px;
@@ -351,15 +351,20 @@ footer{
 <script>
 const menuToggle = document.getElementById("menuToggle");
 const navMenu = document.getElementById("navMenu");
+const navLinks = document.querySelectorAll("nav ul li a");
 
-menuToggle.addEventListener("click", ()=>{
+menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("active");
     // Toggle hamburger / X
-    if(menuToggle.textContent === "☰"){
-        menuToggle.textContent = "✖";
-    } else {
+    menuToggle.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
+});
+
+// Close menu when link is clicked
+navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
         menuToggle.textContent = "☰";
-    }
+    });
 });
 </script>
 

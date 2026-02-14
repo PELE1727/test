@@ -13,7 +13,7 @@
 
         body {
             min-height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -27,75 +27,95 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 18px 40px;
             z-index: 1000;
+            backdrop-filter: blur(6px);
         }
 
         .logo {
             color: white;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
+            letter-spacing: 1px;
         }
 
-        /* Hamburger */
+        /* ===== HAMBURGER ===== */
         .menu-toggle {
             display: none;
-            font-size: 28px;
-            color: white;
+            flex-direction: column;
             cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 28px;
+            height: 3px;
+            background: white;
+            transition: 0.4s;
+        }
+
+        /* Animate hamburger to X */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: white;
             font-size: 14px;
-            padding: 8px 12px;
-            display: block;
-            transition: 0.3s;
+            padding: 8px 14px;
+            transition: 0.3s ease;
+            border-radius: 20px;
         }
 
         nav ul li a:hover {
-            color: #00c3ff;
+            background: #00c3ff;
+            color: black;
         }
 
-        /* ===== OVERLAY CONTENT ===== */
+        /* ===== OVERLAY ===== */
         .overlay {
             flex: 1;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.6);
             color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding-top: 100px;
+            padding-top: 120px;
             text-align: center;
         }
 
         .overlay h1 {
-            font-size: 38px;
+            font-size: 42px;
             margin-bottom: 15px;
-        }
-
-        .overlay p {
-            font-size: 18px;
+            letter-spacing: 2px;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: rgba(0, 0, 0, 0.95);
+            background: #000;
             color: white;
-            padding: 10px 6%;
-            font-size: 12px;
+            padding: 15px 6%;
+            font-size: 13px;
         }
 
         .footer-container {
@@ -110,8 +130,8 @@
         }
 
         .footer-section h3 {
-            margin-bottom: 4px;
-            font-size: 13px;
+            margin-bottom: 6px;
+            font-size: 14px;
             color: #00c3ff;
         }
 
@@ -123,16 +143,15 @@
         .contact-grid, .location-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2px 10px;
-            font-size: 12px;
+            gap: 4px 10px;
         }
 
         /* ===== BACKGROUND SLIDESHOW ===== */
         @keyframes slideshow {
-            0% { background-image: url("image1.png"); }
-            33% { background-image: url("image2.png"); }
-            66% { background-image: url("image3.png"); }
-            100% { background-image: url("image1.png"); }
+            0% { background-image: url("images/image1.png"); }
+            33% { background-image: url("images/image2.png"); }
+            66% { background-image: url("images/image3.png"); }
+            100% { background-image: url("images/image1.png"); }
         }
 
         /* ============================= */
@@ -144,12 +163,13 @@
                 padding: 15px 20px;
             }
 
-            .logo::after {
-                content: "COMIKAGI";
+            .logo {
+                font-size: 20px;
             }
 
-            .logo {
-                font-size: 18px;
+            .logo::before {
+                content: "COMIKAGI";
+                display: block;
             }
 
             nav {
@@ -157,29 +177,32 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: rgba(0,0,0,0.95);
-                display: none;
+                background: rgba(0, 0, 0, 0.95);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+
+            nav.active {
+                max-height: 400px;
             }
 
             nav ul {
                 flex-direction: column;
-                gap: 0;
+                padding: 10px 0;
             }
 
             nav ul li {
-                border-top: 1px solid #333;
+                text-align: center;
             }
 
             nav ul li a {
                 padding: 15px;
+                display: block;
             }
 
             .menu-toggle {
-                display: block;
-            }
-
-            nav.active {
-                display: block;
+                display: flex;
             }
 
             .footer-container {
@@ -192,11 +215,7 @@
             }
 
             .overlay h1 {
-                font-size: 26px;
-            }
-
-            .overlay p {
-                font-size: 15px;
+                font-size: 28px;
             }
         }
 
@@ -205,63 +224,74 @@
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">COOPERATIVE MINIERE KABABARA ET GIKINGO</div>
+<header>
+    <div class="logo">COOPERATIVE MINIERE KABABARA ET GIKINGO</div>
 
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-        <nav id="navMenu">
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">SERVICES</a></li>
-                <li><a href="#">OUR WORK</a></li>
-                <li><a href="#">PUBLICATION</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Main Content Overlay -->
-    <div class="overlay">
-        <h1>WELCOME TO COMIKAGI</h1>
-        <p></p>
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
+    <nav id="navMenu">
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">ABOUT</a></li>
+            <li><a href="#">SERVICES</a></li>
+            <li><a href="#">OUR WORK</a></li>
+            <li><a href="#">PUBLICATION</a></li>
+        </ul>
+    </nav>
+</header>
 
-            <div class="footer-section">
-                <h3>CONTACTS</h3>
-                <div class="contact-grid">
-                    <p><strong>TIN:</strong></p>
-                    <p>101773235</p>
-                    <p><strong>TEL:</strong></p>
-                    <p>+250783419757</p>
-                    <p><strong>EMAIL:</strong></p>
-                    <p><a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a></p>
-                </div>
+<div class="overlay">
+    <h1>WELCOME TO COMIKAGI</h1>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>CONTACTS</h3>
+            <div class="contact-grid">
+                <p><strong>TIN:</strong></p>
+                <p>101773235</p>
+                <p><strong>TEL:</strong></p>
+                <p>+250783419757</p>
+                <p><strong>EMAIL:</strong></p>
+                <p><a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a></p>
             </div>
-
-            <div class="footer-section">
-                <h3>LOCATION</h3>
-                <div class="location-grid">
-                    <p>NORTH PROVINCE</p>
-                    <p>GAKENKE DISTRICT</p>
-                    <p>RULI SECTOR</p>
-                    <p>GIKINGO CELL</p>
-                </div>
-            </div>
-
         </div>
-    </footer>
 
-    <script>
-        function toggleMenu() {
-            document.getElementById("navMenu").classList.toggle("active");
-        }
-    </script>
+        <div class="footer-section">
+            <h3>LOCATION</h3>
+            <div class="location-grid">
+                <p>NORTH PROVINCE</p>
+                <p>GAKENKE DISTRICT</p>
+                <p>RULI SECTOR</p>
+                <p>GIKINGO CELL</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+    });
+
+    // Close menu after clicking a link
+    navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            menuToggle.classList.remove("active");
+        });
+    });
+</script>
 
 </body>
 </html>

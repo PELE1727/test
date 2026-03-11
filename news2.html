@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>COMIKAGI - News</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+min-height:100vh;
+font-family:'Segoe UI', Arial, sans-serif;
+display:flex;
+flex-direction:column;
+background:#0d0d0d;
+}
+
+/* ===== HEADER ===== */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.95);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 40px;
+z-index:1000;
+}
+
+.logo a{
+color:white;
+font-size:20px;
+font-weight:bold;
+text-decoration:none;
+text-transform:uppercase;
+letter-spacing:1px;
+}
+
+/* ===== NAVIGATION ===== */
+
+nav ul{
+list-style:none;
+display:flex;
+gap:20px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:14px;
+padding:8px 16px;
+border-radius:25px;
+transition:0.3s ease;
+text-transform:uppercase;
+}
+
+nav ul li a:hover{
+background:#00c3ff;
+color:black;
+}
+
+/* ===== HAMBURGER ===== */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* ===== CONTENT AREA ===== */
+
+.overlay{
+flex:1;
+background:rgba(0,0,0,0.75);
+color:white;
+padding:140px 60px 40px 60px;
+}
+
+.overlay h1{
+font-size:42px;
+margin-bottom:30px;
+text-transform:uppercase;
+}
+
+/* ===== PDF SECTION ===== */
+
+.pdf-container{
+background:white;
+padding:20px;
+}
+
+.download-btn{
+display:inline-block;
+margin-bottom:15px;
+padding:10px 20px;
+background:#00c3ff;
+color:black;
+text-decoration:none;
+font-size:16px;
+border-radius:5px;
+font-weight:bold;
+}
+
+.download-btn:hover{
+background:black;
+color:white;
+}
+
+iframe{
+border:none;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+background:#000;
+color:white;
+padding:20px 6%;
+font-size:13px;
+display:flex;
+flex-wrap:wrap;
+justify-content:space-between;
+gap:20px;
+}
+
+.footer-section{
+flex:1;
+min-width:200px;
+}
+
+.footer-section h3{
+color:#00c3ff;
+margin-bottom:6px;
+text-transform:uppercase;
+}
+
+footer p{
+margin-bottom:6px;
+}
+
+footer a{
+color:#00c3ff;
+text-decoration:none;
+transition:0.3s;
+}
+
+footer a:hover{
+color:white;
+text-decoration:underline;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+header{
+padding:15px 20px;
+}
+
+nav{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.95);
+max-height:0;
+overflow:hidden;
+transition:max-height 0.5s ease;
+}
+
+nav.active{
+max-height:450px;
+}
+
+nav ul{
+flex-direction:column;
+padding:10px 0;
+}
+
+nav ul li{
+text-align:center;
+}
+
+nav ul li a{
+padding:15px;
+display:block;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.overlay{
+padding:120px 20px 30px 20px;
+}
+
+.overlay h1{
+font-size:28px;
+}
+
+footer{
+flex-direction:column;
+gap:10px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<a href="index.html">COMIKAGI</a>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="home.html">HOME</a></li>
+<li><a href="about.html">ABOUT</a></li>
+<li><a href="services.html">SERVICES</a></li>
+<li><a href="our_work.html">OUR WORK</a></li>
+<li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+</nav>
+
+</header>
+
+<div class="overlay">
+
+<h1>LATEST NEWS</h1>
+
+<div class="pdf-container">
+
+<a href="news.pdf" download class="download-btn">
+Download News PDF
+</a>
+
+<iframe src="news.pdf" width="100%" height="800px"></iframe>
+
+</div>
+
+</div>
+
+<footer>
+
+<div class="footer-section">
+<h3>CONTACTS</h3>
+<p><strong>TIN:</strong> 101773235</p>
+<p><strong>TEL:</strong> +250783419757</p>
+<p><strong>EMAIL:</strong> 
+<a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a>
+</p>
+</div>
+
+<div class="footer-section">
+<h3>LOCATION</h3>
+<p>NORTH PROVINCE</p>
+<p>GAKENKE DISTRICT</p>
+<p>RULI SECTOR</p>
+<p>GIKINGO CELL</p>
+</div>
+
+</footer>
+
+<script>
+
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+menuToggle.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";
+});
+
+navLinks.forEach(link=>{
+link.addEventListener("click",()=>{
+navMenu.classList.remove("active");
+menuToggle.textContent="☰";
+});
+});
+
+</script>
+
+</body>
+</html>

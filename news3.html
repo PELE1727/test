@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CONTACT US - COMIKAGI</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    text-transform:uppercase;
+}
+
+/* BODY - DARK BACKGROUND WITH SLIDESHOW */
+body {
+    min-height: 100vh;
+    background-color: #111; /* fallback dark background */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: slideBackground 18s infinite;
+    position: relative;
+    color: white; /* text color for visibility */
+}
+
+/* DARK OVERLAY */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6); /* semi-transparent black overlay */
+    z-index: -1; /* behind everything */
+}
+
+/* SLIDESHOW KEYFRAMES */
+@keyframes slideBackground {
+    0% { background-image: url("image1.jpg"); }
+    33% { background-image: url("image2.jpg"); }
+    66% { background-image: url("image3.jpg"); }
+    100% { background-image: url("image1.jpg"); }
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:rgba(0,0,0,0.9);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+    z-index:1000;
+}
+
+.logo a{
+    color:white;
+    font-size:14px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+/* NAVIGATION */
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:15px;
+}
+
+nav ul li a{
+    text-decoration:none;
+    color:white;
+    font-size:13px;
+    padding:6px 10px;
+    position:relative;
+    transition:0.3s ease;
+}
+
+nav ul li a:hover{
+    background-color:rgba(0,195,255,0.2);
+    border-radius:4px;
+    color:#00c3ff;
+}
+
+nav ul li a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:2px;
+    background:#00c3ff;
+    transition:0.3s ease;
+}
+
+nav ul li a:hover::after{
+    width:100%;
+}
+
+/* HAMBURGER MENU */
+.menu-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.menu-toggle span{
+    width:25px;
+    height:3px;
+    background:white;
+}
+
+/* CONTACT SECTION */
+.contact-container{
+    margin-top:120px;
+    padding:50px 8%;
+    max-width:1100px;
+    margin-left:auto;
+    margin-right:auto;
+    background:rgba(20,20,20,0.92); /* dark container */
+    border-radius:8px;
+    color:white;
+}
+
+.contact-container h1{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:30px;
+    font-weight:bold;
+    color:white;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+/* CONTACT INFO */
+.contact-info h3{
+    color:white;
+    font-weight:bold;
+    margin-bottom:12px;
+    font-size:16px;
+}
+
+/* Added spacing between sections */
+.contact-info .section {
+    margin-bottom:30px; /* space between Company Info and Location */
+}
+
+.contact-info p{
+    margin-bottom:10px;
+    font-size:14px;
+    color:white;
+    font-weight:bold;
+}
+
+.contact-info a{
+    color:#00c3ff;
+    text-decoration:none;
+}
+
+.contact-info a:hover{
+    text-decoration:underline;
+}
+
+/* FORM */
+form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+/* Extra space between heading and first input */
+form h3{
+    margin-bottom:20px; /* increased space before first input */
+}
+
+/* INPUTS */
+input, textarea{
+    width:100%;
+    padding:14px;
+    border:2px solid #555;
+    border-radius:6px;
+    font-size:13px;
+    background:#222;
+    color:white;
+    transition:all 0.3s ease;
+}
+
+input:hover, textarea:hover{
+    border-color:#00c3ff;
+    background:#333;
+}
+
+input:focus, textarea:focus{
+    outline:none;
+    border-color:#00c3ff;
+    box-shadow:0 0 8px rgba(0,195,255,0.3);
+    background:#222;
+}
+
+textarea{
+    resize:vertical;
+    min-height:80px; /* reduced height */
+}
+
+/* BUTTON */
+button{
+    padding:14px;
+    background:#00c3ff;
+    border:none;
+    color:black;
+    font-size:13px;
+    cursor:pointer;
+    border-radius:6px;
+    letter-spacing:1px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0099cc;
+    transform:scale(1.03);
+}
+
+/* FOOTER */
+footer{
+    margin-top:60px;
+    background:#000;
+    color:white;
+    padding:20px 5%;
+    font-size:12px;
+    text-align:center;
+    letter-spacing:1px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    nav ul{
+        position:absolute;
+        top:100%;
+        right:5%;
+        background:rgba(0,0,0,0.95);
+        flex-direction:column;
+        display:none;
+        padding:10px;
+        border-radius:4px;
+    }
+
+    nav ul.active{
+        display:flex;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-container{
+        padding:40px 6%;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <a href="#">COOPERATIVE MINIERE KABABARA ET GIKINGO</a>
+    </div>
+
+    <div class="menu-toggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <nav>
+        <ul id="navLinks">
+            <li><a href="index1.html">HOME</a></li>
+            <li><a href="index2.html">ABOUT</a></li>
+            <li><a href="services.html">SERVICES</a></li>
+            <li><a href="our_work.html">OUR WORK</a></li>
+            <li><a href="publication.html">PUBLICATION</a></li>
+            <li><a href="news2.html">NEWS</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="contact-container">
+    <h1>CONTACT COMIKAGI</h1>
+    <div class="contact-grid">
+
+        <div class="contact-info">
+            <div class="section">
+                <h3>COMPANY INFORMATION</h3>
+                <p><strong>COMPANY:</strong> COOPERATIVE MINIERE KABABARA ET GIKINGO</p>
+                <p><strong>TIN:</strong> 101773235</p>
+                <p><strong>PHONE:</strong> +250783419757</p>
+                <p><strong>EMAIL:</strong> 
+                    <a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a>
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>LOCATION</h3>
+                <p>NORTH PROVINCE</p>
+                <p>GAKENKE DISTRICT</p>
+                <p>RULI SECTOR</p>
+                <p>GIKINGO CELL</p>
+            </div>
+        </div>
+
+        <div>
+            <h3>SEND US A MESSAGE</h3>
+            <form>
+                <!-- space already increased with margin-bottom on h3 -->
+                <input type="text" placeholder="YOUR NAME" required>
+                <input type="email" placeholder="YOUR EMAIL" required>
+                <input type="text" placeholder="SUBJECT" required>
+                <textarea placeholder="YOUR MESSAGE"></textarea>
+                <button type="submit">SEND MESSAGE</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 COMIKAGI - COOPERATIVE MINIERE KABABARA ET GIKINGO
+</footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navLinks").classList.toggle("active");
+}
+</script>
+
+</body>
+</html>

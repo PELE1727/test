@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>COMIKAGI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+text-transform:uppercase;
+}
+
+/* ===== BODY BACKGROUND ===== */
+
+body{
+min-height:100vh;
+background-image:url("image1.png");
+background-size:contain;
+background-position:center;
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-color:#ffffff; /* CHANGED TO WHITE */
+display:flex;
+flex-direction:column;
+color:white;
+}
+
+/* ===== HEADER / NAVBAR ===== */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.9);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 5%;
+z-index:1000;
+}
+
+.logo a{
+color:white;
+font-size:14px;
+font-weight:bold;
+text-decoration:none;
+}
+
+/* ===== NAVIGATION ===== */
+
+nav ul{
+list-style:none;
+display:flex;
+gap:15px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:13px;
+padding:6px 10px;
+border-radius:25px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+background:#00c3ff;
+color:black;
+}
+
+/* ===== HAMBURGER MENU ===== */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* ===== WELCOME SECTION ===== */
+
+.overlay{
+flex:1;
+background:rgba(0,0,0,0.55);
+display:flex;
+justify-content:center;
+align-items:center;
+padding-top:120px;
+text-align:center;
+}
+
+.overlay h1{
+font-size:42px;
+letter-spacing:2px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+background:#000;
+color:white;
+padding:20px 5%;
+font-size:12px;
+text-align:center;
+margin-top:auto;
+}
+
+footer a{
+color:#00c3ff;
+text-decoration:none;
+margin-left:10px;
+}
+
+footer a:hover{
+text-decoration:underline;
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.95);
+max-height:0;
+overflow:hidden;
+transition:max-height 0.5s ease;
+}
+
+nav.active{
+max-height:500px;
+}
+
+nav ul{
+flex-direction:column;
+padding:10px 0;
+}
+
+nav ul li{
+text-align:center;
+}
+
+nav ul li a{
+padding:15px;
+display:block;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.overlay h1{
+font-size:28px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+
+<header>
+
+<div class="logo">
+<a href="#">COOPERATIVE MINIERE KABABARA ET GIKINGO</a>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="index1.html">HOME</a></li>
+<li><a href="index2.html">ABOUT</a></li>
+<li><a href="services.html">SERVICES</a></li>
+<li><a href="our_work.html">OUR WORK</a></li>
+<li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+</nav>
+
+</header>
+
+<!-- ===== WELCOME SECTION ===== -->
+
+<div class="overlay">
+<h1>WELCOME TO COMIKAGI</h1>
+</div>
+
+<!-- ===== FOOTER ===== -->
+
+<footer>
+© 2026 COMIKAGI - COOPERATIVE MINIERE KABABARA ET GIKINGO |
+<a href="privacy_policy.html">PRIVACY POLICY</a>
+</footer>
+
+<script>
+
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+menuToggle.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";
+});
+
+navLinks.forEach(link=>{
+link.addEventListener("click",()=>{
+navMenu.classList.remove("active");
+menuToggle.textContent="☰";
+});
+});
+
+</script>
+
+</body>
+</html>

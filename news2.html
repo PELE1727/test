@@ -1,8 +1,10 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>COMIKAGI - News</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMIKAGI - News</title>
 
 <style>
 
@@ -10,55 +12,53 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:Arial,sans-serif;
+text-transform:uppercase;
 }
 
 body{
 min-height:100vh;
-font-family:'Segoe UI', Arial, sans-serif;
 display:flex;
 flex-direction:column;
 background:#0d0d0d;
 }
 
-/* ===== HEADER ===== */
+/* HEADER (same as contact page) */
 
 header{
 position:fixed;
 top:0;
 width:100%;
-background:rgba(0,0,0,0.95);
+background:rgba(0,0,0,0.9);
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 40px;
+padding:15px 5%;
 z-index:1000;
 }
 
 .logo a{
 color:white;
-font-size:20px;
+font-size:14px;
 font-weight:bold;
 text-decoration:none;
-text-transform:uppercase;
-letter-spacing:1px;
 }
 
-/* ===== NAVIGATION ===== */
+/* NAVIGATION */
 
 nav ul{
 list-style:none;
 display:flex;
-gap:20px;
+gap:15px;
 }
 
 nav ul li a{
 text-decoration:none;
 color:white;
-font-size:14px;
-padding:8px 16px;
+font-size:13px;
+padding:6px 10px;
 border-radius:25px;
-transition:0.3s ease;
-text-transform:uppercase;
+transition:0.3s;
 }
 
 nav ul li a:hover{
@@ -66,7 +66,7 @@ background:#00c3ff;
 color:black;
 }
 
-/* ===== HAMBURGER ===== */
+/* HAMBURGER */
 
 .menu-toggle{
 display:none;
@@ -75,7 +75,7 @@ color:white;
 cursor:pointer;
 }
 
-/* ===== CONTENT AREA ===== */
+/* CONTENT */
 
 .overlay{
 flex:1;
@@ -87,10 +87,9 @@ padding:140px 60px 40px 60px;
 .overlay h1{
 font-size:42px;
 margin-bottom:30px;
-text-transform:uppercase;
 }
 
-/* ===== PDF SECTION ===== */
+/* PDF AREA */
 
 .pdf-container{
 background:white;
@@ -118,7 +117,7 @@ iframe{
 border:none;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 
 footer{
 background:#000;
@@ -139,7 +138,6 @@ min-width:200px;
 .footer-section h3{
 color:#00c3ff;
 margin-bottom:6px;
-text-transform:uppercase;
 }
 
 footer p{
@@ -149,7 +147,6 @@ margin-bottom:6px;
 footer a{
 color:#00c3ff;
 text-decoration:none;
-transition:0.3s;
 }
 
 footer a:hover{
@@ -157,12 +154,12 @@ color:white;
 text-decoration:underline;
 }
 
-/* ===== MOBILE ===== */
+/* MOBILE */
 
 @media(max-width:768px){
 
 header{
-padding:15px 20px;
+padding:15px 5%;
 }
 
 nav{
@@ -177,7 +174,7 @@ transition:max-height 0.5s ease;
 }
 
 nav.active{
-max-height:450px;
+max-height:500px;
 }
 
 nav ul{
@@ -221,18 +218,19 @@ gap:10px;
 <header>
 
 <div class="logo">
-<a href="index.html">COMIKAGI</a>
+<a href="#">COOPERATIVE MINIERE KABABARA ET GIKINGO</a>
 </div>
 
 <div class="menu-toggle" id="menuToggle">☰</div>
 
 <nav id="navMenu">
 <ul>
-<li><a href="home.html">HOME</a></li>
-<li><a href="about.html">ABOUT</a></li>
+<li><a href="index1.html">HOME</a></li>
+<li><a href="index2.html">ABOUT</a></li>
 <li><a href="services.html">SERVICES</a></li>
 <li><a href="our_work.html">OUR WORK</a></li>
 <li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="news2.html">NEWS</a></li>
 <li><a href="contact.html">CONTACT</a></li>
 </ul>
 </nav>
@@ -298,3 +296,4 @@ menuToggle.textContent="☰";
 
 </body>
 </html>
+```

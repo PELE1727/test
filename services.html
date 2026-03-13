@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SERVICES - COMIKAGI</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+text-transform:uppercase;
+}
+
+/* BODY BACKGROUND */
+
+body{
+min-height:100vh;
+background-color:#111;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+animation:slideBackground 18s infinite;
+color:white;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+@keyframes slideBackground{
+0%{background-image:url("image1.jpg");}
+33%{background-image:url("image2.jpg");}
+66%{background-image:url("image3.jpg");}
+100%{background-image:url("image1.jpg");}
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.9);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 5%;
+z-index:1000;
+}
+
+.logo a{
+color:white;
+font-size:14px;
+font-weight:bold;
+text-decoration:none;
+}
+
+/* NAVIGATION */
+
+nav ul{
+list-style:none;
+display:flex;
+gap:15px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:white;
+font-size:13px;
+padding:6px 10px;
+border-radius:25px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+background:#00c3ff;
+color:black;
+}
+
+/* HAMBURGER */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* SERVICES CONTENT */
+
+.overlay{
+margin-top:120px;
+padding:50px 8%;
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
+background:rgba(20,20,20,0.92);
+border-radius:8px;
+}
+
+.overlay h1{
+text-align:center;
+margin-bottom:40px;
+font-size:30px;
+}
+
+.overlay h2{
+font-size:18px;
+margin-top:25px;
+margin-bottom:10px;
+}
+
+.overlay p{
+font-size:14px;
+line-height:1.6;
+margin-bottom:10px;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:60px;
+background:#000;
+color:white;
+padding:20px 5%;
+font-size:12px;
+text-align:center;
+}
+
+footer a{
+color:#00c3ff;
+text-decoration:none;
+}
+
+footer a:hover{
+text-decoration:underline;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.95);
+max-height:0;
+overflow:hidden;
+transition:max-height 0.5s ease;
+}
+
+nav.active{
+max-height:500px;
+}
+
+nav ul{
+flex-direction:column;
+padding:10px 0;
+}
+
+nav ul li{
+text-align:center;
+}
+
+nav ul li a{
+padding:15px;
+display:block;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.overlay{
+padding:40px 20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<a href="#">COOPERATIVE MINIERE KABABARA ET GIKINGO</a>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="index1.html">HOME</a></li>
+<li><a href="index2.html">ABOUT</a></li>
+<li><a href="services.html">SERVICES</a></li>
+<li><a href="our_work.html">OUR WORK</a></li>
+<li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+</nav>
+
+</header>
+
+<div class="overlay">
+
+<h1>SERVICES</h1>
+
+<h2>MINING</h2>
+<p>Mining is the extraction of geological materials and minerals from the surface of the Earth. Cassiterite and coltan are key minerals found in pegmatite ore hosting in metasedimentary rocks.</p>
+
+<h2>LABORATORY WORK</h2>
+<p>Mining laboratory work involves scientific testing and analysis of geological samples to determine chemical composition and quality control using XRF methods.</p>
+
+<h2>MINERAL PROCESSING</h2>
+<p>Mineral processing uses physical and chemical methods to separate valuable minerals from raw ore and waste rock, increasing grade and concentration.</p>
+
+<h2>MARKET</h2>
+<p>Metal and mineral prices are influenced by supply and demand, production costs, economic conditions, and global commodity markets.</p>
+
+<h2>HOSPITALITY</h2>
+<p>Hospitality reflects COMIKAGI’s commitment to excellence in service, accommodation, and guest care.</p>
+
+</div>
+
+<footer>
+© 2026 COMIKAGI - COOPERATIVE MINIERE KABABARA ET GIKINGO |
+<a href="privacy_policy.html">PRIVACY POLICY</a>
+</footer>
+
+<script>
+
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+menuToggle.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";
+});
+
+navLinks.forEach(link=>{
+link.addEventListener("click",()=>{
+navMenu.classList.remove("active");
+menuToggle.textContent="☰";
+});
+});
+
+</script>
+
+</body>
+</html>

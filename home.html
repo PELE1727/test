@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OUR WORK - COMIKAGI</title>
+
+<style>
+
+/* GENERAL */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#111;
+color:white;
+min-height:100vh;
+}
+
+/* DARK OVERLAY */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:-1;
+}
+
+/* NAVBAR */
+
+header{
+width:100%;
+background:#000;
+padding:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:fixed;
+top:0;
+z-index:1000;
+}
+
+.logo a{
+color:white;
+font-size:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* NAVIGATION */
+
+nav ul{
+list-style:none;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+nav ul li a{
+color:white;
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+nav ul li a:hover{
+color:#00c3ff;
+}
+
+/* HAMBURGER */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+color:white;
+cursor:pointer;
+}
+
+/* PAGE CONTENT */
+
+.overlay{
+margin-top:120px;
+padding:50px 8%;
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
+background:rgba(20,20,20,0.92);
+border-radius:8px;
+}
+
+.overlay h1{
+text-align:center;
+margin-bottom:40px;
+font-size:30px;
+}
+
+/* IMAGE GRID */
+
+.container{
+width:100%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.card{
+height:250px;
+overflow:hidden;
+border-radius:10px;
+position:relative;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 0.5s ease;
+}
+
+.card:hover img{
+transform:scale(1.2);
+}
+
+/* FOOTER */
+
+footer{
+margin-top:50px;
+background:#000;
+padding:30px;
+text-align:center;
+font-size:14px;
+}
+
+footer a{
+color:#00c3ff;
+text-decoration:none;
+}
+
+footer a:hover{
+text-decoration:underline;
+}
+
+/* MOBILE DESIGN */
+
+@media (max-width:768px){
+
+header{
+flex-direction:column;
+gap:10px;
+text-align:center;
+}
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+width:100%;
+max-height:0;
+overflow:hidden;
+transition:max-height 0.5s ease;
+}
+
+nav.active{
+max-height:500px;
+}
+
+nav ul{
+flex-direction:column;
+align-items:center;
+padding:10px 0;
+}
+
+nav ul li a{
+display:block;
+padding:10px;
+}
+
+.overlay{
+padding:40px 20px;
+}
+
+.container{
+grid-template-columns:1fr;
+}
+
+.card{
+height:200px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+<div class="logo">
+<a href="index.html">COOPERATIVE MINIERE KABABARA ET GIKINGO</a>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="index1.html">HOME</a></li>
+<li><a href="about.html">ABOUT US</a></li>
+<li><a href="services.html">SERVICES</a></li>
+<li><a href="our_work.html">OUR WORK</a></li>
+<li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="contact.html">CONTACTS</a></li>
+</ul>
+</nav>
+
+</header>
+
+
+<!-- IMAGE GRID CONTENT -->
+
+<div class="overlay">
+
+<h1>OUR COMMUNITY</h1>
+
+<div class="container">
+
+<div class="card">
+<img id="img1" src="image1.png">
+</div>
+
+<div class="card">
+<img id="img2" src="image2.png">
+</div>
+
+<div class="card">
+<img id="img3" src="image3.png">
+</div>
+
+<div class="card">
+<img id="img4" src="image4.png">
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 COMIKAGI - COOPERATIVE MINIERE KABABARA ET GIKINGO |
+<a href="privacy_policy.html">PRIVACY POLICY</a>
+</footer>
+
+
+<script>
+
+/* HAMBURGER MENU */
+
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+menuToggle.addEventListener("click",()=>{
+navMenu.classList.toggle("active");
+menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";
+});
+
+navLinks.forEach(link=>{
+link.addEventListener("click",()=>{
+navMenu.classList.remove("active");
+menuToggle.textContent="☰";
+});
+});
+
+
+/* IMAGE ANIMATION */
+
+const images = [
+"image1.png","image2.png","image3.png","image4.png",
+"image5.png","image6.png","image7.png","image8.png",
+"image9.png","image10.png","image11.png","image12.png",
+"image13.png","image14.png","image15.png","image16.png"
+];
+
+let index = 0;
+
+function changeImages(){
+
+document.getElementById("img1").src = images[index % 16];
+document.getElementById("img2").src = images[(index+1) % 16];
+document.getElementById("img3").src = images[(index+2) % 16];
+document.getElementById("img4").src = images[(index+3) % 16];
+
+index++;
+
+}
+
+setInterval(changeImages,2000);
+
+</script>
+
+</body>
+</html>

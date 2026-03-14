@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABOUT - COMIKAGI</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  text-transform:uppercase;
+}
+
+/* BODY BACKGROUND */
+body{
+  min-height:100vh;
+  background-color:#111;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  color:white;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 5%;
+  z-index:1000;
+}
+
+.logo a{
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* NAVIGATION */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:25px;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  background:#00c3ff;
+  color:black;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* OVERLAY */
+.overlay{
+  margin-top:120px;
+  padding:50px 8%;
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
+  background:rgba(20,20,20,0.92);
+  border-radius:8px;
+}
+
+.overlay h1{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:30px;
+}
+
+.overlay h2{
+  font-size:18px;
+  margin-top:25px;
+  margin-bottom:10px;
+}
+
+.overlay p{
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  background:#000;
+  color:white;
+  padding:20px 5%;
+  font-size:12px;
+  text-align:center;
+}
+
+footer a{
+  color:#00c3ff;
+  text-decoration:none;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  nav{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease;
+  }
+
+  nav.active{
+    max-height:500px;
+  }
+
+  nav ul{
+    flex-direction:column;
+    padding:10px 0;
+  }
+
+  nav ul li{
+    text-align:center;
+  }
+
+  nav ul li a{
+    padding:15px;
+    display:block;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .overlay{
+    padding:40px 20px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<a href="index.html">COOPERATIVE MINIERE KABABARA ET GIKINGO</a>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="index1.html">HOME</a></li>
+<li><a href="index2.html">ABOUT</a></li>
+<li><a href="services.html">SERVICES</a></li>
+<li><a href="our_work.html">OUR WORK</a></li>
+<li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+</ul>
+</nav>
+
+</header>
+
+<div class="overlay">
+<h1>ABOUT COMIKAGI</h1>
+
+<h2>MINERALS MINED IN COMIKAGI</h2>
+<p>Key mined and still mining minerals in COMIKAGI are Cassiterite and coltan.</p>
+
+<h2>HISTORY OF MINING IN COMIKAGI</h2>
+<p>Cooperative COMIKAGI is a mining cooperative with its headquarters in the Gakenke district, Ruli sector, Gikingo cell. It has been involved in mining for almost 35 years since 1989. Kababara perimeter is one of the six (6) mining licenses that COMIKAGI owns and is one where mining started. The president of Cooperative COMIKAGI is Kayitesi Beatrice.</p>
+
+<h2>PRODUCTION STATUS</h2>
+<p>COMIKAGI production is good ranging between 10,000kg to 20,000kg. The cassiterite is more dominant than coltan in pegmatite ore.</p>
+
+<h2>ADDING VALUE TO MINED MINERALS</h2>
+<p>Currently COMIKAGI uses Magnetic separator machines which use strong permanent magnets or electromagnets to remove ferrous contaminants from concentrate ores. They are crucial for industries like mining because utilizing magnetic drums, rolls, or belts to separate materials.</p>
+
+<h2>FUTURE PROJECTION</h2>
+<p>Future project of COMIKAGI is Smelting process which will be used to extract pure metals from their mineral ores. Smelting uses intense heat and chemical reducing agents to break the bonds between the metal and other elements.</p>
+</div>
+
+<footer>
+© 2026 COMIKAGI - COOPERATIVE MINIERE KABABARA ET GIKINGO |
+<a href="privacy_policy.html">PRIVACY POLICY</a>
+</footer>
+
+<script>
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+menuToggle.addEventListener("click",()=>{
+  navMenu.classList.toggle("active");
+  menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";
+});
+
+navLinks.forEach(link=>{
+  link.addEventListener("click",()=>{
+    navMenu.classList.remove("active");
+    menuToggle.textContent="☰";
+  });
+});
+</script>
+
+</body>
+</html>

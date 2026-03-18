@@ -6,196 +6,84 @@
 <title>CONTACT US - COMIKAGI</title>
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-text-transform:uppercase;
-}
-
-/* BODY */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;text-transform:uppercase;}
 body{
-min-height:100vh;
-background-color:#111;
-color:white;
-display:flex;
-flex-direction:column;
-}
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-z-index:-1;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background-color:#111;
+  color:white;
 }
 
 /* HEADER */
 header{
-position:fixed;
-top:0;
-width:100%;
-background:rgba(0,0,0,0.9);
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 5%;
-z-index:1000;
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 5%;
+  z-index:1000;
 }
+.logo a{color:white;font-size:14px;font-weight:bold;text-decoration:none;}
+nav ul{list-style:none;display:flex;gap:15px;}
+nav ul li a{text-decoration:none;color:white;font-size:13px;padding:6px 10px;border-radius:25px;transition:0.3s;}
+nav ul li a:hover{background:#00c3ff;color:black;}
+.menu-toggle{display:none;font-size:28px;color:white;cursor:pointer;}
 
-.logo a{
-color:white;
-font-size:14px;
-font-weight:bold;
-text-decoration:none;
-}
-
-/* NAV */
-nav ul{
-list-style:none;
-display:flex;
-gap:15px;
-}
-
-nav ul li a{
-text-decoration:none;
-color:white;
-font-size:13px;
-padding:6px 10px;
-border-radius:25px;
-transition:0.3s;
-}
-
-nav ul li a:hover{
-background:#00c3ff;
-color:black;
-}
-
-/* HAMBURGER */
-.menu-toggle{
-display:none;
-font-size:28px;
-cursor:pointer;
-}
-
-/* MAIN CONTENT CENTERING */
-.main-content{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-padding-top:100px;
-}
-
-/* CONTACT */
+/* CONTACT SECTION */
 .contact-container{
-padding:50px 8%;
-max-width:1100px;
-width:100%;
-background:rgba(20,20,20,0.92);
-border-radius:8px;
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  margin-top:80px;
 }
-
-.contact-container h1{
-text-align:center;
-margin-bottom:40px;
-font-size:30px;
+.contact-box{
+  max-width:900px;
+  width:100%;
+  background:rgba(20,20,20,0.92);
+  border-radius:8px;
+  padding:40px;
 }
-
-.contact-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-}
-
-/* INFO */
-.contact-info p{
-margin-bottom:10px;
-font-size:14px;
-text-transform:none;
-}
-
-.contact-info a{
-color:#00c3ff;
-text-decoration:none;
-}
-
-/* FORM */
-form{
-display:flex;
-flex-direction:column;
-gap:15px;
-}
-
-input,textarea{
-padding:14px;
-border:2px solid #555;
-border-radius:6px;
-background:#222;
-color:white;
-text-transform:none;
-}
-
-button{
-padding:14px;
-background:#00c3ff;
-border:none;
-cursor:pointer;
-border-radius:6px;
-}
-
-.success-message{
-display:none;
-background:#0f0;
-color:black;
-padding:10px;
-border-radius:5px;
-text-align:center;
-}
+.contact-box h1{text-align:center;margin-bottom:30px;font-size:28px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+.contact-info h3{margin-bottom:12px;font-size:16px;}
+.contact-info p{margin-bottom:10px;font-size:14px;font-weight:bold;}
+.contact-info a{color:#00c3ff;text-decoration:none;}
+.contact-info a:hover{text-decoration:underline;}
+form{display:flex;flex-direction:column;gap:15px;}
+input,textarea{width:100%;padding:12px;border:2px solid #555;border-radius:6px;font-size:13px;background:#222;color:white;}
+textarea{resize:vertical;min-height:80px;}
+button{padding:12px;background:#00c3ff;border:none;color:black;font-size:13px;cursor:pointer;border-radius:6px;}
+button:hover{background:#0099cc;}
 
 /* FOOTER */
 footer{
-background:#000;
-padding:20px;
-text-align:center;
-font-size:12px;
+  background:#000;
+  color:white;
+  padding:15px 5%;
+  font-size:12px;
+  text-align:center;
+  position:fixed;
+  bottom:0;
+  width:100%;
 }
-
-footer a{
-color:#00c3ff;
-text-decoration:none;
-margin:0 5px;
-}
+footer a{color:#00c3ff;text-decoration:none;}
+footer a:hover{text-decoration:underline;}
 
 /* MOBILE */
 @media(max-width:768px){
-
-nav{
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:#000;
-max-height:0;
-overflow:hidden;
-}
-
-nav.active{max-height:500px;}
-
-nav ul{flex-direction:column;}
-
-.menu-toggle{display:block;}
-
-.contact-grid{grid-template-columns:1fr;}
-
-.main-content{
-padding-top:120px;
-}
-
+  nav{position:absolute;top:70px;left:0;width:100%;background:rgba(0,0,0,0.95);max-height:0;overflow:hidden;transition:max-height 0.5s ease;}
+  nav.active{max-height:500px;}
+  nav ul{flex-direction:column;padding:10px 0;}
+  nav ul li{text-align:center;}
+  nav ul li a{padding:15px;display:block;}
+  .menu-toggle{display:block;}
+  .contact-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -203,82 +91,79 @@ padding-top:120px;
 <body>
 
 <header>
-<div class="logo">
-<a href="index.html">COMIKAGI</a>
-</div>
-
-<div class="menu-toggle" id="menuToggle">☰</div>
-
-<nav id="navMenu">
-<ul>
-<li><a href="home.html">HOME</a></li>
-<li><a href="about.html">ABOUT</a></li>
-<li><a href="services.html">SERVICES</a></li>
-<li><a href="contact.html">CONTACT</a></li>
-</ul>
-</nav>
+  <div class="logo"><a href="index.html">COMIKAGI</a></div>
+  <div class="menu-toggle" id="menuToggle">☰</div>
+  <nav id="navMenu">
+    <ul>
+      <li><a href="home.html">HOME</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="services.html">SERVICES</a></li>
+      <li><a href="our_work.html">OUR WORK</a></li>
+      <li><a href="publication.html">PUBLICATION</a></li>
+      <li><a href="news.html">NEWS</a></li>
+      <li><a href="contact.html">CONTACTS</a></li>
+    </ul>
+  </nav>
 </header>
 
-<div class="main-content">
-
 <section class="contact-container">
-
-<h1>CONTACT COMIKAGI</h1>
-
-<div class="contact-grid">
-
-<div class="contact-info">
-<p><strong>Company:</strong> COMIKAGI</p>
-<p><strong>Phone:</strong> +250783419757</p>
-<p><strong>Email:</strong> <a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a></p>
-<p><strong>Location:</strong> Gakenke District, Rwanda</p>
-</div>
-
-<div>
-
-<div class="success-message" id="successMsg">
-Message sent successfully!
-</div>
-
-<form action="https://formspree.io/f/yourformid" method="POST" id="contactForm">
-
-<input type="text" name="_gotcha" style="display:none">
-
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<input type="text" name="subject" placeholder="Subject" required>
-<textarea name="message" placeholder="Your Message" required></textarea>
-
-<button type="submit">Send Message</button>
-
-</form>
-
-</div>
-
-</div>
-
+  <div class="contact-box">
+    <h1>CONTACT COMIKAGI</h1>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>COMPANY INFORMATION</h3>
+        <p><strong>COMPANY:</strong> COMIKAGI</p>
+        <p><strong>TIN:</strong> 101773235</p>
+        <p><strong>PHONE:</strong> +250783419757</p>
+        <p><strong>EMAIL:</strong> <a href="mailto:comikagi2030@gmail.com">comikagi2030@gmail.com</a></p>
+        <h3>LOCATION</h3>
+        <p>NORTH PROVINCE</p>
+        <p>GAKENKE DISTRICT</p>
+        <p>RULI SECTOR</p>
+        <p>GIKINGO CELL</p>
+      </div>
+      <div>
+        <h3>SEND US A MESSAGE</h3>
+        <form action="https://formspree.io/f/yourFormID" method="POST">
+          <input type="text" name="name" placeholder="YOUR NAME" required>
+          <input type="email" name="email" placeholder="YOUR EMAIL" required>
+          <input type="text" name="subject" placeholder="SUBJECT" required>
+          <textarea name="message" placeholder="YOUR MESSAGE" required></textarea>
+          <!-- Google reCAPTCHA widget -->
+          <div class="g-recaptcha" data-sitekey="your-site-key"></div>
+          <button type="submit">SEND MESSAGE</button>
+        </form>
+        <p id="form-status"></p>
+      </div>
+    </div>
+  </div>
 </section>
-
-</div>
 
 <footer>
 © 2026 COMIKAGI |
-<a href="privacy_policy.html">Privacy Policy</a> |
-<a href="terms.html">Terms of Service</a>
+<a href="privacy_policy.html">PRIVACY POLICY</a> |
+<a href="terms.html">TERMS OF SERVICE</a>
 </footer>
+
+<!-- Google reCAPTCHA script line -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
 const menuToggle=document.getElementById("menuToggle");
 const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+menuToggle.addEventListener("click",()=>{navMenu.classList.toggle("active");menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";});
+navLinks.forEach(link=>{link.addEventListener("click",()=>{navMenu.classList.remove("active");menuToggle.textContent="☰";});});
 
-menuToggle.onclick=()=>{
-navMenu.classList.toggle("active");
-};
-
-// confirmation message
-const form=document.getElementById("contactForm");
-form.addEventListener("submit",()=>{
-document.getElementById("successMsg").style.display="block";
+// Form submission confirmation
+const form=document.querySelector("form");
+const status=document.getElementById("form-status");
+form.addEventListener("submit",async(e)=>{
+  e.preventDefault();
+  const data=new FormData(form);
+  const response=await fetch(form.action,{method:form.method,body:data,headers:{'Accept':'application/json'}});
+  if(response.ok){status.textContent="Thank you! Your message has been sent.";form.reset();}
+  else{status.textContent="Oops! There was a problem submitting your form.";}
 });
 </script>
 

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABOUT - COMIKAGI</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+  text-transform:uppercase;
+}
+
+/* BODY BACKGROUND */
+body{
+  min-height:100vh;
+  background-color:#111;
+  color:white;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+  z-index:-1;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(0,0,0,0.9);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 5%;
+  z-index:1000;
+}
+
+.logo a{
+  color:white;
+  font-size:14px;
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* NAVIGATION */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:15px;
+}
+
+nav ul li a{
+  text-decoration:none;
+  color:white;
+  font-size:13px;
+  padding:6px 10px;
+  border-radius:25px;
+  transition:0.3s;
+}
+
+nav ul li a:hover{
+  background:#00c3ff;
+  color:black;
+}
+
+/* HAMBURGER */
+.menu-toggle{
+  display:none;
+  font-size:28px;
+  color:white;
+  cursor:pointer;
+}
+
+/* CONTENT */
+.overlay{
+  margin-top:120px;
+  padding:50px 8%;
+  max-width:1100px;
+  margin-left:auto;
+  margin-right:auto;
+  background:rgba(20,20,20,0.92);
+  border-radius:8px;
+}
+
+.overlay h1{
+  text-align:center;
+  margin-bottom:40px;
+  font-size:30px;
+}
+
+.overlay h2{
+  font-size:18px;
+  margin-top:25px;
+  margin-bottom:10px;
+}
+
+.overlay p{
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:10px;
+  text-transform:none; /* IMPORTANT: readable text */
+}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  background:#000;
+  color:white;
+  padding:20px 5%;
+  font-size:12px;
+  text-align:center;
+}
+
+footer a{
+  color:#00c3ff;
+  text-decoration:none;
+}
+
+footer a:hover{
+  text-decoration:underline;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  nav{
+    position:absolute;
+    top:70px;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.95);
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s ease;
+  }
+
+  nav.active{
+    max-height:500px;
+  }
+
+  nav ul{
+    flex-direction:column;
+    padding:10px 0;
+  }
+
+  nav ul li{
+    text-align:center;
+  }
+
+  nav ul li a{
+    padding:15px;
+    display:block;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .overlay{
+    padding:40px 20px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<a href="index.html">COMIKAGI</a>
+</div>
+
+<div class="menu-toggle" id="menuToggle">☰</div>
+
+<nav id="navMenu">
+<ul>
+<li><a href="home.html">HOME</a></li>
+<li><a href="about.html">ABOUT US</a></li>
+<li><a href="services.html">SERVICES</a></li>
+<li><a href="our_work.html">OUR WORK</a></li>
+<li><a href="publication.html">PUBLICATION</a></li>
+<li><a href="news.html">NEWS</a></li>
+<li><a href="contact.html">CONTACTS</a></li>
+</ul>
+</nav>
+
+</header>
+
+<div class="overlay">
+<h1>ABOUT COMIKAGI</h1>
+
+<h2>WHO WE ARE</h2>
+<p>
+COMIKAGI (Cooperative Miniere Kababara et Gikingo) is a legally established mining cooperative based in Gakenke District, Rwanda. With over 35 years of experience in the mining industry, COMIKAGI focuses on responsible mineral extraction, operational excellence, and community development.
+</p>
+
+<h2>OUR HISTORY</h2>
+<p>
+Established in 1989, COMIKAGI has consistently operated across multiple licensed mining sites, including the Kababara perimeter. The cooperative has grown into a recognized and trusted entity in Rwanda’s mining sector under the leadership of its president, Kayitesi Beatrice.
+</p>
+
+<h2>OUR MISSION</h2>
+<p>
+Our mission is to conduct safe, efficient, and environmentally responsible mining while improving the economic well-being of our members and surrounding communities.
+</p>
+
+<h2>WHAT WE DO</h2>
+<p>
+We specialize in the extraction and processing of key minerals such as cassiterite and coltan, which are essential in global industries like electronics and manufacturing.
+</p>
+
+<h2>PRODUCTION AND OPERATIONS</h2>
+<p>
+Our production capacity ranges between 10,000 kg and 20,000 kg. Cassiterite remains the dominant mineral extracted from pegmatite ores.
+</p>
+
+<h2>TECHNOLOGY AND VALUE ADDITION</h2>
+<p>
+We utilize magnetic separator machines to improve mineral quality by removing unwanted materials, ensuring higher purity and market value.
+</p>
+
+<h2>FUTURE PLANS</h2>
+<p>
+We aim to introduce smelting processes to refine minerals locally, increase value, create employment, and contribute to Rwanda’s industrial growth.
+</p>
+
+<h2>OUR COMMITMENT</h2>
+<p>
+COMIKAGI is committed to ethical practices, environmental protection, transparency, and compliance with all applicable laws and regulations.
+</p>
+
+<h2>TRANSPARENCY & TRUST</h2>
+<p>
+This website provides accurate and reliable information about our operations. We aim to build trust with visitors, partners, and stakeholders through transparency and professionalism.
+</p>
+
+<h2>CONTACT INFORMATION</h2>
+<p>
+For inquiries or partnerships, please visit our Contact page or reach out via our official communication channels.
+</p>
+
+</div>
+
+<footer>
+© 2026 COMIKAGI |
+<a href="privacy_policy.html">PRIVACY POLICY</a> |
+<a href="terms.html">TERMS</a>
+</footer>
+
+<script>
+const menuToggle=document.getElementById("menuToggle");
+const navMenu=document.getElementById("navMenu");
+const navLinks=document.querySelectorAll("nav ul li a");
+
+menuToggle.addEventListener("click",()=>{
+  navMenu.classList.toggle("active");
+  menuToggle.textContent=navMenu.classList.contains("active")?"✕":"☰";
+});
+
+navLinks.forEach(link=>{
+  link.addEventListener("click",()=>{
+    navMenu.classList.remove("active");
+    menuToggle.textContent="☰";
+  });
+});
+</script>
+
+</body>
+</html>
